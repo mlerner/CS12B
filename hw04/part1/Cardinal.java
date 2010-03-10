@@ -1,21 +1,22 @@
 import java.awt.*;
 
 public class Cardinal extends AbstractBird implements AviaryConstants{
-    //Hmmm..shoud I set the color in hear or in the abstract class.
-    
     public static int UP = 0;
     public static int DOWN = 1;
-    int flyingDirection = 1;
+    private int flyingDirection = DOWN;
     
+    //Constructor method for Cardinal objects
     public Cardinal(int x, int y)
     {
         super(x, y);
         super.incrementCreated();
         super.setColor(Color.RED);
-    }
+    }//End of constructor method
     
+    //fly() moves the bird based upon specified behavior
     public void fly()
     {
+        //If the bird is at the edges, change direction
         if (super.getY() == SIZE - 1)
         {
             flyingDirection = DOWN;
@@ -25,6 +26,7 @@ public class Cardinal extends AbstractBird implements AviaryConstants{
             flyingDirection = UP;
         }
         
+        //Interpret flying direction, and translate point accordingly
         if (flyingDirection == UP)
         {
             super.translateDown();
@@ -33,6 +35,7 @@ public class Cardinal extends AbstractBird implements AviaryConstants{
         {
             super.translateUp();
         } 
+        
         super.incrementFlown();
-    }
+    }//End of fly()
 }
